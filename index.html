@@ -193,7 +193,25 @@
       }
     }
   </script>
+<script>
+    // Disable the right-click context menu
+    document.addEventListener("contextmenu", function (event) {
+        event.preventDefault();
+    });
 
+    // Block common developer-tools shortcuts
+    document.addEventListener("keydown", function (event) {
+        const key = event.key.toUpperCase();
+
+        if (
+            event.key === "F12" ||
+            (event.ctrlKey && event.shiftKey && ["I", "J", "C"].includes(key)) ||
+            (event.ctrlKey && key === "U")
+        ) {
+            event.preventDefault();
+        }
+    });
+</script>
   <style>
     /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
